@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class whoisServerList\DomainApi</title>
+
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-whoisServerList.html">
+						whoisServerList					</a>
+
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-whoisServerList.DomainApi.html">DomainApi</a></li>
+			</ul>
+
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-whoisServerList.DomainApiException.html">DomainApiException</a></li>
+				<li><a href="class-whoisServerList.RecoverableDomainApiException.html">RecoverableDomainApiException</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-whoisServerList.html" title="Summary of whoisServerList"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class DomainApi</h1>
+
+
+	<div class="description">
+	<p>A Domain API.</p>
+
+<p>This is a client library for the service of https://alpha.domaininformation.de/.
+Register there to get an API key.</p>
+
+<p>With this API you can check if a domain name is available, get its
+whois data or query an arbitrary whois server. The service is using
+the whois list from https://github.com/whois-server-list/whois-server-list.
+Also it avoids hitting any rate limits on the whois servers.</p>
+
+<p>Example:</p>
+
+<pre><span class="php-keyword1">use</span> whoisServerList\DomainApi;
+
+<span class="php-var">$domainApi</span> = <span class="php-keyword1">new</span> DomainApi(<span class="php-quote">&quot;apiKey&quot;</span>, <span class="php-quote">&quot;apiPassword&quot;</span>);
+<span class="php-keyword1">echo</span> <span class="php-var">$domainApi</span>-&gt;isAvailable(<span class="php-quote">&quot;example.net&quot;</span>) ? <span class="php-quote">&quot;available&quot;</span> : <span class="php-quote">&quot;registered&quot;</span>;</pre>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-whoisServerList.html">whoisServerList</a><br>
+		
+
+				<b>License:</b>
+				<a href="http://www.wtfpl.net/txt/copying/">WTFPL</a><br>
+				<b>Author:</b>
+				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
+				<b>Link:</b>
+				<a href="https://alpha.domaininformation.de/">https://alpha.domaininformation.de/</a><br>
+			<b>Located at</b> <a href="source-class-whoisServerList.DomainApi.html#8-173" title="Go to source code">DomainApi.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-whoisServerList.DomainApi.html#39-66" title="Go to source code">__construct</a>( <span>string <var>$apiKey</var></span>, <span>string <var>$password</var></span>, <span>string <var>$endpoint</var> = <span class="php-quote">&quot;https://alpha.domaininformation.de/v0/&quot;</span></span> )</code>
+
+		<div class="description short">
+			<p>Builds a Domain API.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Builds a Domain API.</p>
+
+<p>Register at https://alpha.domaininformation.de/ to get an API key
+and password.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$apiKey</var></dt>
+					<dd>API key</dd>
+					<dt><var>$password</var></dt>
+					<dd>password</dd>
+					<dt><var>$endpoint</var></dt>
+					<dd>optional endpoint, default is "https://alpha.domaininformation.de/v0/".</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isAvailable" id="_isAvailable">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isAvailable">#</a>
+		<code><a href="source-class-whoisServerList.DomainApi.html#68-90" title="Go to source code">isAvailable</a>( <span>string <var>$domain</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks if a domain is available.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks if a domain is available.</p>
+
+<p>If a domain is available (i.e. not registered) this method
+will return true.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$domain</var></dt>
+					<dd>domain name, e.g. "example.net"</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>true if the domain is available, false otherwise.
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-whoisServerList.RecoverableDomainApiException.html">whoisServerList\RecoverableDomainApiException</a></code><br><p>API failed, but you can try again.
+     This can happen if the upstream whois server did not respond in time.</p><br>
+					<code><a href="class-whoisServerList.DomainApiException.html">whoisServerList\DomainApiException</a></code><br>API failed
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="whois" id="_whois">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_whois">#</a>
+		<code><a href="source-class-whoisServerList.DomainApi.html#92-111" title="Go to source code">whois</a>( <span>string <var>$domain</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns the whois data for a domain.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the whois data for a domain.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$domain</var></dt>
+					<dd>domain name, e.g. "example.net"</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>response of the respective whois server
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-whoisServerList.RecoverableDomainApiException.html">whoisServerList\RecoverableDomainApiException</a></code><br><p>API failed, but you can try again.
+     This can happen if the upstream whois server did not respond in time.</p><br>
+					<code><a href="class-whoisServerList.DomainApiException.html">whoisServerList\DomainApiException</a></code><br>API failed
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="query" id="_query">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_query">#</a>
+		<code><a href="source-class-whoisServerList.DomainApi.html#113-135" title="Go to source code">query</a>( <span>string <var>$host</var></span>, <span>string <var>$query</var></span> )</code>
+
+		<div class="description short">
+			<p>Queries a whois server.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Queries a whois server.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$host</var></dt>
+					<dd>hostname of the whois server, e.g. "whois.verisign-grs.com"</dd>
+					<dt><var>$query</var></dt>
+					<dd>query, e.g. "example.net"</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>response from the whois server
+				</div>
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-whoisServerList.RecoverableDomainApiException.html">whoisServerList\RecoverableDomainApiException</a></code><br><p>API failed, but you can try again.
+     This can happen if the upstream whois server did not respond in time.</p><br>
+					<code><a href="class-whoisServerList.DomainApiException.html">whoisServerList\DomainApiException</a></code><br>API failed
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

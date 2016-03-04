@@ -1,0 +1,8 @@
+{
+	"name": "whois-server-list/domain-api-doc",
+	"require": {
+		"php": ">=5",
+		"whois-server-list/domain-api": "dev-master",
+		"apigen/apigen": "^4"
+	}
+}

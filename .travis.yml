@@ -1,0 +1,26 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+env:
+  global:
+    - secure: "zJDAXGpndrlEHgimUrhXEa+CfJSL8uNNj6i6T/zkRKU8ZCcH/N6HfcKESK/VRsDLtb1BN4OMiiVe6nIQer6qy4YYn6g+DDJCRU1HUcG+WegguBhPdNwicsQT5UplEMErHjV3CMXfqE6EFbhnGilTygvqX35LEzhY1y2WxmLPo7txUZoRcYB8tb0eDdQoqXWAStvzqYFeTl8lJ+Y9oRw9W4zFy0yik9aFEcMZiMIuu2Z/Ht2+bTfkn+SJlR/2DOlLpvOwE5Um2wcY5Kjg16TPa68y0SrOOa59XzUfXbjnbptQQapGJOeHWKSi/qAD2mPQqdT2RM2nT27BWs0QyHKqAq+6zPb49cRiZpy5oezfce0z+bLoN6Z323TPzwXZTBfHdwpyrWqX2pNHIczD2hAjfPLRc3qF/qnqsi0mBdNtr4eL/lCABnEvehW3K05vCjCdZLgQidCEhj97hsD+X5YOryAs2nnYa8swF5csv4hZKpGBDHAWzfLNytjjNF/LTrTNAqNTQVOeTBf6drTKjPfm+QIvtGbG0LbcSMLBLhehYB3Vv7FzB39Wm4d9p4H2T0fwYAlyvsZn12eqM9tDsiH19edtAi6+VO+gYiY7p+0QvLVd+m5QOaV28rIkWRsqmdGRERT6/Cov92dSYSF9A8Wpo4wrwnY2oEaWj4CT09bJsq0="
+    - secure: "tJhqqEm33yMnCT+AZIU4XSZI5NfmeFI5mBBL7jm32vkfJ2Fa15D0zRStpf8Hyd7hq4bzLO21JABFeiKXbq4Jre3lPa4um0KoLl3wC234nmMsLckpeaEyFy+p4SyDIylzRmfQ+rsqAkJAxGcRVIIAgrD6PA9n88rOgBXNjHAIzWWBz17VQ6M6k8bKTLWKPl4XvjY65V0mqHzhzXH+5Jij012AuHzKeaAYmMVIW9io0TJDZIF+nG6Mk3RlgQ6bJF1DFGi6m6yqXpGLkPFIgkyQJq8SerkRilzi7H4ORdSxjgBOMQv36OARUxeWkMU7NFziE5H1+AJd/Go2S5r4T5qpx2O6710/6IL2zlA7ZmRUXD54plNTJeHY9XZ5uTazRN53T5XwYOJB3istgRgokxhkl1AgQKwzgWSgWgy9tD9X7Pjj7mb6DAljzSQPx9g/dzlf73F7nXh6iF4/ySRwUJ+h4PCwAZOQ76zfCCYPLWD2iq9g9rBr8j0uIaqiw4nGJY7sxvYkbpFa3WzLbDsbh/7Favwr2SaN/Wb8TCW1e4mzBQ3q5gyC1E9hvoQk2VAL0yM28HdlZyxQRHUVWyU04bR7NegxoB0wXj4HLBm5Djmd+M9ti563FIvdBwXCDn9Ez/L6WU+1YU6pexM3aDyONiKsxe/KRCoNKUfkWZwKI7+NYtE="
+
+php:
+  - 7.0
+  - 5.6
+  - hhvm
+
+install:
+  - composer require squizlabs/php_codesniffer
+  - composer require phpmd/phpmd
+
+script:
+  - vendor/bin/phpunit
+  - vendor/bin/phpcs --standard=PSR2 src/ tests/
+  - vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode

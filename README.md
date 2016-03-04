@@ -7,8 +7,9 @@ With this API you can
 - Get its whois data or query an arbitrary whois server
 - Don't worry about rate limits on the respective whois server
 
-The service supports all domains of this
-[Whois Server list](https://github.com/whois-server-list/whois-server-list).
+The service supports all domains of the
+[Whois Server list](https://github.com/whois-server-list/whois-server-list),
+which is more than 500 top level domains.
 
 # Installation
 

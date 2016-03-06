@@ -3,34 +3,32 @@
 namespace whoisServerList;
 
 /**
- * A Domain API test.
+ * A Whois API test.
  *
  * @author Markus Malkusch <markus@malkusch.de>
- * @link https://alpha.domaininformation.de/
+ * @link https://market.mashape.com/malkusch/whois
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
-class DomainApiTest extends \PHPUnit_Framework_TestCase
+class WhoisApiTest extends \PHPUnit_Framework_TestCase
 {
     
     /**
      * @dataProvider provideBuildingShouldFailWithInvalidParameters
      * @test
      */
-    public function buildingShouldFailWithInvalidParameters($apiKey, $password, $endpoint)
+    public function buildingShouldFailWithInvalidParameters($apiKey, $endpoint)
     {
         $this->expectException(\InvalidArgumentException::class);
-        new DomainApi($apiKey, $password, $endpoint);
+        new WhoisApi($apiKey, $endpoint);
     }
     
     public function provideBuildingShouldFailWithInvalidParameters()
     {
         return [
-            ["valid", null, "http://example.org"],
-            ["valid", "", "http://example.org"],
-            [null, "valid", "http://example.org"],
-            ["", "valid", "http://example.org"],
-            ["valid", "valid", null],
-            ["valid", "valid", ""],
+            [null, "http://example.org"],
+            ["", "http://example.org"],
+            ["valid", null],
+            ["valid", ""],
         ];
     }
     
@@ -41,7 +39,7 @@ class DomainApiTest extends \PHPUnit_Framework_TestCase
     public function isAvailableShoudFailWithInvalidParameters($domain)
     {
         $this->expectException(\InvalidArgumentException::class);
-        $api = new DomainApi("key", "pwd");
+        $api = new WhoisApi("key");
         $api->isAvailable($domain);
     }
     
@@ -52,7 +50,7 @@ class DomainApiTest extends \PHPUnit_Framework_TestCase
     public function whoisShoudFailWithInvalidParameters($domain)
     {
         $this->expectException(\InvalidArgumentException::class);
-        $api = new DomainApi("key", "pwd");
+        $api = new WhoisApi("key");
         $api->whois($domain);
     }
     
@@ -71,7 +69,7 @@ class DomainApiTest extends \PHPUnit_Framework_TestCase
     public function queryShoudFailWithInvalidParameters($host, $query)
     {
         $this->expectException(\InvalidArgumentException::class);
-        $api = new DomainApi("key", "pwd");
+        $api = new WhoisApi("key");
         $api->query($host, $query);
     }
     

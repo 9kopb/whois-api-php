@@ -1,6 +1,6 @@
 # Domain API
 
-This is a client library for the [Domain API service](https://alpha.domaininformation.de/).
+This is a client library for the [Whois API service](https://market.mashape.com/malkusch/whois).
 With this API you can
 
 - Check if a domain name is available
@@ -16,31 +16,33 @@ which is more than 500 top level domains.
 Use [Composer](https://getcomposer.org/):
 
 ```sh
-composer require whois-server-list/domain-api
+composer require whois-server-list/whois-api
 ```
 
 # Usage
 
-You'll need an API key to use this library. Register at the
-[Domain API service](https://alpha.domaininformation.de/) to get
-an API key.
+You'll need a "Mashape-Key" to use this library. Register at 
+[Mashape's marketplace](https://market.mashape.com/) and subscribe
+to the [Whois API](https://market.mashape.com/malkusch/whois).
 
 ```php
-$domainApi = new whoisServerList\DomainApi("apiKey", "apiPassword");
+$whoisApi = new whoisServerList\WhoisApi("apiKey");
 ```
 
-- [`DomainApi::isAvailable()`](http://whois-server-list.github.io/domain-api-php/api/class-whoisServerList.DomainApi.html#_isAvailable)
+- [`WhoisApi::isAvailable()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_isAvailable)
   checks if a domain name is available.
-- [`DomainApi::whois()`](http://whois-server-list.github.io/domain-api-php/api/class-whoisServerList.DomainApi.html#_whois)
+- [`WhoisApi::whois()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_whois)
   returns the whois data of a domain.
-- [`DomainApi::query()`](http://whois-server-list.github.io/domain-api-php/api/class-whoisServerList.DomainApi.html#_whois)
+- [`WhoisApi::query()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_query)
   queries an arbitrary whois server.
+- [`WhoisApi::domains()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_domains)
+  Lists all top and second level domains which can be used by the Whois API.
 
 ## Example
 
 ```php
-$domainApi = new whoisServerList\DomainApi("apiKey", "apiPassword");
-echo $domainApi->isAvailable("example.net") ? "available" : "registered";
+$whoisApi = new whoisServerList\WhoisApi("apiKey");
+echo $whoisApi->isAvailable("example.net") ? "available" : "registered";
 ```
 
 # License and authors
@@ -48,4 +50,4 @@ echo $domainApi->isAvailable("example.net") ? "available" : "registered";
 This project is free and under the WTFPL.
 Responsable for this project is Markus Malkusch markus@malkusch.de.
 
-[![Build Status](https://travis-ci.org/whois-server-list/domain-api-php.svg?branch=master)](https://travis-ci.org/whois-server-list/domain-api-php)
+[![Build Status](https://travis-ci.org/whois-server-list/whois-api-php.svg?branch=master)](https://travis-ci.org/whois-server-list/whois-api-php)

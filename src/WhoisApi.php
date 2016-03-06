@@ -6,9 +6,9 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 
 /**
- * A Domain API.
+ * A Whois API.
  *
- * This is a client library for the service of https://alpha.domaininformation.de/.
+ * This is a client library for the service of https://market.mashape.com/malkusch/whois.
  * Register there to get an API key.
  *
  * With this API you can check if a domain name is available, get its
@@ -18,17 +18,17 @@ use GuzzleHttp\Client;
  *
  * Example:
  * <code>
- * use whoisServerList\DomainApi;
+ * use whoisServerList\WhoisApi;
  *
- * $domainApi = new DomainApi("apiKey", "apiPassword");
- * echo $domainApi->isAvailable("example.net") ? "available" : "registered";
+ * $whoisApi = new WhoisApi("apiKey");
+ * echo $whoisApi->isAvailable("example.net") ? "available" : "registered";
  * </code>
  *
  * @author Markus Malkusch <markus@malkusch.de>
- * @link https://alpha.domaininformation.de/
+ * @link https://market.mashape.com/malkusch/whois
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
-class DomainApi
+class WhoisApi
 {
 
     /**
@@ -39,20 +39,15 @@ class DomainApi
     /**
      * Builds a Domain API.
      *
-     * Register at https://alpha.domaininformation.de/ to get an API key
-     * and password.
+     * Register at https://market.mashape.com/malkusch/whois to get an API key.
      *
      * @param string $apiKey API key
-     * @param string $password password
-     * @param string $endpoint optional endpoint, default is "https://alpha.domaininformation.de/v0/".
+     * @param string $endpoint optional endpoint, default is "https://whois-v0.p.mashape.com/".
      */
-    public function __construct($apiKey, $password, $endpoint = "https://alpha.domaininformation.de/v0/")
+    public function __construct($apiKey, $endpoint = "https://whois-v0.p.mashape.com/")
     {
         if (empty($apiKey)) {
             throw new \InvalidArgumentException("API key is empty.");
-        }
-        if (empty($password)) {
-            throw new \InvalidArgumentException("Password is empty.");
         }
         if (empty($endpoint)) {
             throw new \InvalidArgumentException("Endpoint is empty.");
@@ -60,7 +55,7 @@ class DomainApi
 
         $this->client = new Client([
             "base_uri" => $endpoint,
-            "auth" => [$apiKey, $password],
+            "headers" => ["X-Mashape-Key" => $apiKey],
             "http_errors" => false,
         ]);
     }
@@ -74,9 +69,9 @@ class DomainApi
      * @param string $domain domain name, e.g. "example.net"
      * @return bool true if the domain is available, false otherwise.
      *
-     * @throws RecoverableDomainApiException API failed, but you can try again.
+     * @throws RecoverableWhoisApiException API failed, but you can try again.
      *      This can happen if the upstream whois server did not respond in time.
-     * @throws DomainApiException API failed
+     * @throws WhoisApiException API failed
      */
     public function isAvailable($domain)
     {
@@ -95,9 +90,9 @@ class DomainApi
      * @param string $domain domain name, e.g. "example.net"
      * @return string response of the respective whois server
      *
-     * @throws RecoverableDomainApiException API failed, but you can try again.
+     * @throws RecoverableWhoisApiException API failed, but you can try again.
      *      This can happen if the upstream whois server did not respond in time.
-     * @throws DomainApiException API failed
+     * @throws WhoisApiException API failed
      */
     public function whois($domain)
     {
@@ -118,9 +113,9 @@ class DomainApi
      *
      * @return string response from the whois server
      *
-     * @throws RecoverableDomainApiException API failed, but you can try again.
+     * @throws RecoverableWhoisApiException API failed, but you can try again.
      *      This can happen if the upstream whois server did not respond in time.
-     * @throws DomainApiException API failed
+     * @throws WhoisApiException API failed
      */
     public function query($host, $query)
     {
@@ -135,6 +130,19 @@ class DomainApi
     }
 
     /**
+     * Returns a list of all top and second level domains, which are
+     * known to the Whois API.
+     *
+     * @return string[] all available top and second level domains.
+     */
+    public function domains()
+    {
+        $body = $this->sendRequest("domains");
+        $result = json_decode($body);
+        return $result;
+    }
+    
+    /**
      * Sends a request and return the reponse body.
      *
      * @param string $path request path
@@ -142,16 +150,16 @@ class DomainApi
      *
      * @return string response body
      *
-     * @throws RecoverableDomainApiException API failed, but you can try again.
-     * @throws DomainApiException API failed
+     * @throws RecoverableWhoisApiException API failed, but you can try again.
+     * @throws WhoisApiException API failed
      */
-    private function sendRequest($path, $parameters)
+    private function sendRequest($path, array $parameters = [])
     {
         try {
             $response = $this->client->request("GET", $path, ["query" => $parameters]);
 
         } catch (\Exception $e) {
-            throw new DomainApiException("Transport failed.", 0, $e);
+            throw new WhoisApiException("Transport failed.", 0, $e);
         }
             
         switch ($response->getStatusCode()) {
@@ -161,13 +169,13 @@ class DomainApi
 
             case 502:
             case 504:
-                throw new RecoverableDomainApiException(
+                throw new RecoverableWhoisApiException(
                     "Try again: {$response->getBody()}",
                     $response->getStatusCode()
                 );
 
             default:
-                throw new DomainApiException("API failed: {$response->getBody()}", $response->getStatusCode());
+                throw new WhoisApiException("API failed: {$response->getBody()}", $response->getStatusCode());
         }
     }
 }

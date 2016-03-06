@@ -3,19 +3,19 @@
 namespace whoisServerList;
 
 /**
- * A Domain API integration test.
+ * A Whois API integration test.
  *
- * Please provide the environment variable API_KEY and API_PASSWORD.
+ * Please provide the environment variable API_KEY.
  *
  * @author Markus Malkusch <markus@malkusch.de>
- * @link https://alpha.domaininformation.de/
+ * @link https://market.mashape.com/malkusch/whois
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
-class DomainApiIntegrationTest extends \PHPUnit_Framework_TestCase
+class WhoisApiIntegrationTest extends \PHPUnit_Framework_TestCase
 {
     
     /**
-     * @var DomainApi the SUT
+     * @var WhoisApi the SUT
      */
     private $api;
     
@@ -28,13 +28,8 @@ class DomainApiIntegrationTest extends \PHPUnit_Framework_TestCase
             $this->markTestIncomplete("Please provide the API key with the environment variable API_KEY.");
             return;
         }
-        $password = getenv("API_PASSWORD");
-        if (empty($password)) {
-            $this->markTestIncomplete("Please provide the API key with the environment variable API_PASSWORD.");
-            return;
-        }
         
-        $this->api = new DomainApi($key, $password);
+        $this->api = new WhoisApi($key);
     }
     
     /**
@@ -58,7 +53,7 @@ class DomainApiIntegrationTest extends \PHPUnit_Framework_TestCase
      */
     public function isAvailableShouldFailForUnknownTLD()
     {
-        $this->expectException(DomainApiException::class);
+        $this->expectException(WhoisApiException::class);
         $this->api->isAvailable("invalid");
     }
     
@@ -76,7 +71,7 @@ class DomainApiIntegrationTest extends \PHPUnit_Framework_TestCase
      */
     public function whoisShouldFailForUnknownTLD()
     {
-        $this->expectException(DomainApiException::class);
+        $this->expectException(WhoisApiException::class);
         $this->api->whois("invalid");
     }
     
@@ -94,7 +89,18 @@ class DomainApiIntegrationTest extends \PHPUnit_Framework_TestCase
      */
     public function queryShouldFailForWrongHost()
     {
-        $this->expectException(DomainApiException::class);
+        $this->expectException(WhoisApiException::class);
         $this->api->query("invalid", "example.net");
+    }
+    
+    /**
+     * @test
+     */
+    public function domainsShouldIncludKnownTLDs()
+    {
+        $domains = $this->api->domains();
+        $this->assertTrue(in_array("de", $domains));
+        $this->assertTrue(in_array("com", $domains));
+        $this->assertTrue(in_array("net", $domains));
     }
 }

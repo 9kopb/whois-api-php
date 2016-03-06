@@ -1,11 +1,11 @@
 {
-    "name": "whois-server-list/domain-api",
-    "description": "Client library for the Domain API of https://alpha.domaininformation.de/. You can check the availability of internet domain names or perform whois queries.",
+    "name": "whois-server-list/whois-api",
+    "description": "Client library for the Whois API. You can check the availability of internet domain names or perform whois queries.",
     "keywords": ["whois", "domain"],
     "require": {
         "guzzlehttp/guzzle": "^6.1"
     },
-    "homepage": "https://alpha.domaininformation.de/",
+    "homepage": "https://market.mashape.com/malkusch/whois",
     "license": "WTFPL",
     "authors": [
         {

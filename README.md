@@ -31,6 +31,8 @@ $whoisApi = new whoisServerList\WhoisApi("apiKey");
 
 - [`WhoisApi::isAvailable()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_isAvailable)
   checks if a domain name is available.
+- [`WhoisApi::areAvailable()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_areAvailable)
+  checks multiple domain names if they are available.
 - [`WhoisApi::whois()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_whois)
   returns the whois data of a domain.
 - [`WhoisApi::query()`](http://whois-server-list.github.io/whois-api-php/api/class-whoisServerList.WhoisApi.html#_query)

@@ -103,4 +103,24 @@ class WhoisApiIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue(in_array("com", $domains));
         $this->assertTrue(in_array("net", $domains));
     }
+    
+    /**
+     * @test
+     */
+    public function areAvailableShouldReturnMap()
+    {
+        $result = $this->api->areAvailable(
+            ["example.net", "dsfsdfsdfsdfdsfsdfdsfsdfdsfdssdfse.net", "invalid", "example.com"]
+        );
+        
+        $this->assertEquals(
+            [
+                "example.net" => false,
+                "dsfsdfsdfsdfdsfsdfdsfsdfdsfdssdfse.net" => true,
+                "invalid" => null,
+                "example.com" => false
+            ],
+            $result
+        );
+    }
 }

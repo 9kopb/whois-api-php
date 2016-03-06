@@ -4,6 +4,8 @@ namespace whoisServerList;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
+use GuzzleHttp\Promise;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * A Whois API.
@@ -84,6 +86,46 @@ class WhoisApi
         return $result->available;
     }
 
+    /**
+     * Checks multiple domains if they are available.
+     *
+     * areAvailable(["example.net", "example.org", "example.com"])
+     * could return this map:
+     * <code>
+     * [
+     *   "example.net" => true,  // example.net is available
+     *   "example.org" => false, // example.org is registered
+     *   "example.com" => null   // example.com failed
+     * ]
+     * </code>
+     *
+     * @param string[] $domains domain names, e.g. ["example.net", "example.org"]
+     * @return boolean[] map with the result for each domain. True means
+     *      the domain is available, false not. NULL however means that the
+     *      query failed for that domain.
+     */
+    public function areAvailable(array $domains)
+    {
+        $promises = [];
+        foreach ($domains as $domain) {
+            $promises[$domain] = $this->client->requestAsync(
+                "GET",
+                "check",
+                ["query" => ["domain" => $domain]]
+            );
+        }
+        $results = Promise\unwrap($promises);
+
+        return array_map(function (ResponseInterface $response) {
+            if ($response->getStatusCode() != 200) {
+                return null;
+            }
+            $result = json_decode($response->getBody());
+            return $result->available;
+
+        }, $results);
+    }
+    
     /**
      * Returns the whois data for a domain.
      *

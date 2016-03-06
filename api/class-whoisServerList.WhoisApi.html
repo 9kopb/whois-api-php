@@ -118,7 +118,7 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
 				<a href="https://market.mashape.com/malkusch/whois">https://market.mashape.com/malkusch/whois</a><br>
-			<b>Located at</b> <a href="source-class-whoisServerList.WhoisApi.html#8-181" title="Go to source code">WhoisApi.php</a>
+			<b>Located at</b> <a href="source-class-whoisServerList.WhoisApi.html#10-223" title="Go to source code">WhoisApi.php</a>
 		<br>
 	</div>
 
@@ -138,7 +138,7 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-whoisServerList.WhoisApi.html#39-61" title="Go to source code">__construct</a>( <span>string <var>$apiKey</var></span>, <span>string <var>$endpoint</var> = <span class="php-quote">&quot;https://whois-v0.p.mashape.com/&quot;</span></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#41-63" title="Go to source code">__construct</a>( <span>string <var>$apiKey</var></span>, <span>string <var>$endpoint</var> = <span class="php-quote">&quot;https://whois-v0.p.mashape.com/&quot;</span></span> )</code>
 
 		<div class="description short">
 			<p>Builds a Domain API.</p>
@@ -177,7 +177,7 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isAvailable">#</a>
-		<code><a href="source-class-whoisServerList.WhoisApi.html#63-85" title="Go to source code">isAvailable</a>( <span>string <var>$domain</var></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#65-87" title="Go to source code">isAvailable</a>( <span>string <var>$domain</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks if a domain is available.</p>
@@ -213,6 +213,56 @@ will return true.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="areAvailable" id="_areAvailable">
+
+		<td class="attributes"><code>
+			 public 
+
+			bool[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_areAvailable">#</a>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#89-127" title="Go to source code">areAvailable</a>( <span>array <var>$domains</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks multiple domains if they are available.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks multiple domains if they are available.</p>
+
+<p>areAvailable(["example.net", "example.org", "example.com"])
+could return this map:</p>
+
+<pre>[
+  <span class="php-quote">&quot;example.net&quot;</span> =&gt; <span class="php-keyword1">true</span>,  <span class="php-comment">// example.net is available</span>
+  <span class="php-quote">&quot;example.org&quot;</span> =&gt; <span class="php-keyword1">false</span>, <span class="php-comment">// example.org is registered</span>
+  <span class="php-quote">&quot;example.com&quot;</span> =&gt; <span class="php-keyword1">null</span>   <span class="php-comment">// example.com failed</span>
+]</pre>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$domains</var></dt>
+					<dd>domain names, e.g. ["example.net", "example.org"]</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					bool[]<br><p>map with the result for each domain. True means
+     the domain is available, false not. NULL however means that the
+     query failed for that domain.</p>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="whois" id="_whois">
 
 		<td class="attributes"><code>
@@ -225,7 +275,7 @@ will return true.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_whois">#</a>
-		<code><a href="source-class-whoisServerList.WhoisApi.html#87-106" title="Go to source code">whois</a>( <span>string <var>$domain</var></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#129-148" title="Go to source code">whois</a>( <span>string <var>$domain</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns the whois data for a domain.</p>
@@ -270,7 +320,7 @@ will return true.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_query">#</a>
-		<code><a href="source-class-whoisServerList.WhoisApi.html#108-130" title="Go to source code">query</a>( <span>string <var>$host</var></span>, <span>string <var>$query</var></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#150-172" title="Go to source code">query</a>( <span>string <var>$host</var></span>, <span>string <var>$query</var></span> )</code>
 
 		<div class="description short">
 			<p>Queries a whois server.</p>
@@ -317,7 +367,7 @@ will return true.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_domains">#</a>
-		<code><a href="source-class-whoisServerList.WhoisApi.html#132-143" title="Go to source code">domains</a>( )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#174-185" title="Go to source code">domains</a>( )</code>
 
 		<div class="description short">
 			<p>Returns a list of all top and second level domains, which are

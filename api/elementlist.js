@@ -1,3 +1,3 @@
 
 var ApiGen = ApiGen || {};
-ApiGen.elements = [["c","whoisServerList\\DomainApi"],["c","whoisServerList\\DomainApiException"],["c","whoisServerList\\RecoverableDomainApiException"]];
+ApiGen.elements = [["c","whoisServerList\\RecoverableWhoisApiException"],["c","whoisServerList\\WhoisApi"],["c","whoisServerList\\WhoisApiException"]];

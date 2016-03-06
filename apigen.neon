@@ -1,4 +1,4 @@
 destination: api
 source:
-	- vendor/whois-server-list/domain-api/src
+	- vendor/whois-server-list/whois-api/src
 

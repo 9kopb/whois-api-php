@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class whoisServerList\DomainApi</title>
+	<title>Class whoisServerList\WhoisApi</title>
 
 	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
 
@@ -32,15 +32,15 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-whoisServerList.DomainApi.html">DomainApi</a></li>
+				<li class="active"><a href="class-whoisServerList.WhoisApi.html">WhoisApi</a></li>
 			</ul>
 
 
 
 			<h3>Exceptions</h3>
 			<ul>
-				<li><a href="class-whoisServerList.DomainApiException.html">DomainApiException</a></li>
-				<li><a href="class-whoisServerList.RecoverableDomainApiException.html">RecoverableDomainApiException</a></li>
+				<li><a href="class-whoisServerList.RecoverableWhoisApiException.html">RecoverableWhoisApiException</a></li>
+				<li><a href="class-whoisServerList.WhoisApiException.html">WhoisApiException</a></li>
 			</ul>
 
 
@@ -76,13 +76,13 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class DomainApi</h1>
+	<h1>Class WhoisApi</h1>
 
 
 	<div class="description">
-	<p>A Domain API.</p>
+	<p>A Whois API.</p>
 
-<p>This is a client library for the service of https://alpha.domaininformation.de/.
+<p>This is a client library for the service of https://market.mashape.com/malkusch/whois.
 Register there to get an API key.</p>
 
 <p>With this API you can check if a domain name is available, get its
@@ -92,10 +92,10 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 
 <p>Example:</p>
 
-<pre><span class="php-keyword1">use</span> whoisServerList\DomainApi;
+<pre><span class="php-keyword1">use</span> whoisServerList\WhoisApi;
 
-<span class="php-var">$domainApi</span> = <span class="php-keyword1">new</span> DomainApi(<span class="php-quote">&quot;apiKey&quot;</span>, <span class="php-quote">&quot;apiPassword&quot;</span>);
-<span class="php-keyword1">echo</span> <span class="php-var">$domainApi</span>-&gt;isAvailable(<span class="php-quote">&quot;example.net&quot;</span>) ? <span class="php-quote">&quot;available&quot;</span> : <span class="php-quote">&quot;registered&quot;</span>;</pre>
+<span class="php-var">$whoisApi</span> = <span class="php-keyword1">new</span> WhoisApi(<span class="php-quote">&quot;apiKey&quot;</span>);
+<span class="php-keyword1">echo</span> <span class="php-var">$whoisApi</span>-&gt;isAvailable(<span class="php-quote">&quot;example.net&quot;</span>) ? <span class="php-quote">&quot;available&quot;</span> : <span class="php-quote">&quot;registered&quot;</span>;</pre>
 	</div>
 
 
@@ -117,8 +117,8 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 				<b>Author:</b>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
 				<b>Link:</b>
-				<a href="https://alpha.domaininformation.de/">https://alpha.domaininformation.de/</a><br>
-			<b>Located at</b> <a href="source-class-whoisServerList.DomainApi.html#8-173" title="Go to source code">DomainApi.php</a>
+				<a href="https://market.mashape.com/malkusch/whois">https://market.mashape.com/malkusch/whois</a><br>
+			<b>Located at</b> <a href="source-class-whoisServerList.WhoisApi.html#8-181" title="Go to source code">WhoisApi.php</a>
 		<br>
 	</div>
 
@@ -138,7 +138,7 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-whoisServerList.DomainApi.html#39-66" title="Go to source code">__construct</a>( <span>string <var>$apiKey</var></span>, <span>string <var>$password</var></span>, <span>string <var>$endpoint</var> = <span class="php-quote">&quot;https://alpha.domaininformation.de/v0/&quot;</span></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#39-61" title="Go to source code">__construct</a>( <span>string <var>$apiKey</var></span>, <span>string <var>$endpoint</var> = <span class="php-quote">&quot;https://whois-v0.p.mashape.com/&quot;</span></span> )</code>
 
 		<div class="description short">
 			<p>Builds a Domain API.</p>
@@ -147,18 +147,15 @@ Also it avoids hitting any rate limits on the whois servers.</p>
 		<div class="description detailed hidden">
 			<p>Builds a Domain API.</p>
 
-<p>Register at https://alpha.domaininformation.de/ to get an API key
-and password.</p>
+<p>Register at https://market.mashape.com/malkusch/whois to get an API key.</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$apiKey</var></dt>
 					<dd>API key</dd>
-					<dt><var>$password</var></dt>
-					<dd>password</dd>
 					<dt><var>$endpoint</var></dt>
-					<dd>optional endpoint, default is "https://alpha.domaininformation.de/v0/".</dd>
+					<dd>optional endpoint, default is "https://whois-v0.p.mashape.com/".</dd>
 				</dl></div>
 
 
@@ -180,7 +177,7 @@ and password.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isAvailable">#</a>
-		<code><a href="source-class-whoisServerList.DomainApi.html#68-90" title="Go to source code">isAvailable</a>( <span>string <var>$domain</var></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#63-85" title="Go to source code">isAvailable</a>( <span>string <var>$domain</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks if a domain is available.</p>
@@ -206,9 +203,9 @@ will return true.</p>
 
 				<h4>Throws</h4>
 				<div class="list">
-					<code><a href="class-whoisServerList.RecoverableDomainApiException.html">whoisServerList\RecoverableDomainApiException</a></code><br><p>API failed, but you can try again.
+					<code><a href="class-whoisServerList.RecoverableWhoisApiException.html">whoisServerList\RecoverableWhoisApiException</a></code><br><p>API failed, but you can try again.
      This can happen if the upstream whois server did not respond in time.</p><br>
-					<code><a href="class-whoisServerList.DomainApiException.html">whoisServerList\DomainApiException</a></code><br>API failed
+					<code><a href="class-whoisServerList.WhoisApiException.html">whoisServerList\WhoisApiException</a></code><br>API failed
 				</div>
 
 
@@ -228,7 +225,7 @@ will return true.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_whois">#</a>
-		<code><a href="source-class-whoisServerList.DomainApi.html#92-111" title="Go to source code">whois</a>( <span>string <var>$domain</var></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#87-106" title="Go to source code">whois</a>( <span>string <var>$domain</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns the whois data for a domain.</p>
@@ -251,9 +248,9 @@ will return true.</p>
 
 				<h4>Throws</h4>
 				<div class="list">
-					<code><a href="class-whoisServerList.RecoverableDomainApiException.html">whoisServerList\RecoverableDomainApiException</a></code><br><p>API failed, but you can try again.
+					<code><a href="class-whoisServerList.RecoverableWhoisApiException.html">whoisServerList\RecoverableWhoisApiException</a></code><br><p>API failed, but you can try again.
      This can happen if the upstream whois server did not respond in time.</p><br>
-					<code><a href="class-whoisServerList.DomainApiException.html">whoisServerList\DomainApiException</a></code><br>API failed
+					<code><a href="class-whoisServerList.WhoisApiException.html">whoisServerList\WhoisApiException</a></code><br>API failed
 				</div>
 
 
@@ -273,7 +270,7 @@ will return true.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_query">#</a>
-		<code><a href="source-class-whoisServerList.DomainApi.html#113-135" title="Go to source code">query</a>( <span>string <var>$host</var></span>, <span>string <var>$query</var></span> )</code>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#108-130" title="Go to source code">query</a>( <span>string <var>$host</var></span>, <span>string <var>$query</var></span> )</code>
 
 		<div class="description short">
 			<p>Queries a whois server.</p>
@@ -298,10 +295,46 @@ will return true.</p>
 
 				<h4>Throws</h4>
 				<div class="list">
-					<code><a href="class-whoisServerList.RecoverableDomainApiException.html">whoisServerList\RecoverableDomainApiException</a></code><br><p>API failed, but you can try again.
+					<code><a href="class-whoisServerList.RecoverableWhoisApiException.html">whoisServerList\RecoverableWhoisApiException</a></code><br><p>API failed, but you can try again.
      This can happen if the upstream whois server did not respond in time.</p><br>
-					<code><a href="class-whoisServerList.DomainApiException.html">whoisServerList\DomainApiException</a></code><br>API failed
+					<code><a href="class-whoisServerList.WhoisApiException.html">whoisServerList\WhoisApiException</a></code><br>API failed
 				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="domains" id="_domains">
+
+		<td class="attributes"><code>
+			 public 
+
+			string[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_domains">#</a>
+		<code><a href="source-class-whoisServerList.WhoisApi.html#132-143" title="Go to source code">domains</a>( )</code>
+
+		<div class="description short">
+			<p>Returns a list of all top and second level domains, which are
+known to the Whois API.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a list of all top and second level domains, which are
+known to the Whois API.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string[]<br>all available top and second level domains.
+				</div>
+
 
 
 

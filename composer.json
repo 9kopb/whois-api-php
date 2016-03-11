@@ -5,7 +5,7 @@
     "require": {
         "guzzlehttp/guzzle": "^6.1"
     },
-    "homepage": "https://market.mashape.com/malkusch/whois",
+    "homepage": "http://whois-api.domaininformation.de/",
     "license": "WTFPL",
     "authors": [
         {

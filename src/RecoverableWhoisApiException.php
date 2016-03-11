@@ -9,7 +9,7 @@ namespace whoisServerList;
  * causing call again.
  *
  * @author Markus Malkusch <markus@malkusch.de>
- * @link https://market.mashape.com/malkusch/whois
+ * @link http://whois-api.domaininformation.de/ Whois API
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
 class RecoverableWhoisApiException extends WhoisApiException

@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * A Whois API.
  *
- * This is a client library for the service of https://market.mashape.com/malkusch/whois.
+ * This is a client library for the service of http://whois-api.domaininformation.de/.
  * Register there to get an API key.
  *
  * With this API you can check if a domain name is available, get its
@@ -27,7 +27,7 @@ use Psr\Http\Message\ResponseInterface;
  * </code>
  *
  * @author Markus Malkusch <markus@malkusch.de>
- * @link https://market.mashape.com/malkusch/whois
+ * @link http://whois-api.domaininformation.de/ Whois API
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
 class WhoisApi
@@ -41,7 +41,7 @@ class WhoisApi
     /**
      * Builds a Domain API.
      *
-     * Register at https://market.mashape.com/malkusch/whois to get an API key.
+     * Register at http://whois-api.domaininformation.de/ to get an API key.
      *
      * @param string $apiKey API key
      * @param string $endpoint optional endpoint, default is "https://whois-v0.p.mashape.com/".

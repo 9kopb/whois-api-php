@@ -1,6 +1,6 @@
 # Domain API
 
-This is a client library for the [Whois API service](https://market.mashape.com/malkusch/whois).
+This is a client library for the [Whois API service](http://whois-api.domaininformation.de/).
 With this API you can
 
 - Check if a domain name is available
@@ -21,9 +21,8 @@ composer require whois-server-list/whois-api
 
 # Usage
 
-You'll need a "Mashape-Key" to use this library. Register at 
-[Mashape's marketplace](https://market.mashape.com/) and subscribe
-to the [Whois API](https://market.mashape.com/malkusch/whois).
+You'll need an api key to use this library. Get one from 
+the [Whois API](http://whois-api.domaininformation.de/).
 
 ```php
 $whoisApi = new whoisServerList\WhoisApi("apiKey");

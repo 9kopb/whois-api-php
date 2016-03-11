@@ -88,7 +88,7 @@
 </span><span id="10" class="l"><span class="php-comment">/**
 </span></span><span id="11" class="l"><span class="php-comment"> * A Whois API.
 </span></span><span id="12" class="l"><span class="php-comment"> *
-</span></span><span id="13" class="l"><span class="php-comment"> * This is a client library for the service of https://market.mashape.com/malkusch/whois.
+</span></span><span id="13" class="l"><span class="php-comment"> * This is a client library for the service of http://whois-api.domaininformation.de/.
 </span></span><span id="14" class="l"><span class="php-comment"> * Register there to get an API key.
 </span></span><span id="15" class="l"><span class="php-comment"> *
 </span></span><span id="16" class="l"><span class="php-comment"> * With this API you can check if a domain name is available, get its
@@ -105,7 +105,7 @@
 </span></span><span id="27" class="l"><span class="php-comment"> * &lt;/code&gt;
 </span></span><span id="28" class="l"><span class="php-comment"> *
 </span></span><span id="29" class="l"><span class="php-comment"> * @author Markus Malkusch &lt;markus@malkusch.de&gt;
-</span></span><span id="30" class="l"><span class="php-comment"> * @link https://market.mashape.com/malkusch/whois
+</span></span><span id="30" class="l"><span class="php-comment"> * @link http://whois-api.domaininformation.de/ Whois API
 </span></span><span id="31" class="l"><span class="php-comment"> * @license http://www.wtfpl.net/txt/copying/ WTFPL
 </span></span><span id="32" class="l"><span class="php-comment"> */</span>
 </span><span id="33" class="l"><span class="php-keyword1">class</span> WhoisApi
@@ -119,7 +119,7 @@
 </span><span id="41" class="l">    <span class="php-comment">/**
 </span></span><span id="42" class="l"><span class="php-comment">     * Builds a Domain API.
 </span></span><span id="43" class="l"><span class="php-comment">     *
-</span></span><span id="44" class="l"><span class="php-comment">     * Register at https://market.mashape.com/malkusch/whois to get an API key.
+</span></span><span id="44" class="l"><span class="php-comment">     * Register at http://whois-api.domaininformation.de/ to get an API key.
 </span></span><span id="45" class="l"><span class="php-comment">     *
 </span></span><span id="46" class="l"><span class="php-comment">     * @param string $apiKey API key
 </span></span><span id="47" class="l"><span class="php-comment">     * @param string $endpoint optional endpoint, default is &quot;https://whois-v0.p.mashape.com/&quot;.
@@ -178,7 +178,7 @@
 </span></span><span id="100" class="l"><span class="php-comment">     * &lt;/code&gt;
 </span></span><span id="101" class="l"><span class="php-comment">     *
 </span></span><span id="102" class="l"><span class="php-comment">     * @param string[] $domains domain names, e.g. [&quot;example.net&quot;, &quot;example.org&quot;]
-</span></span><span id="103" class="l"><span class="php-comment">     * @return bool[] map with the result for each domain. True means
+</span></span><span id="103" class="l"><span class="php-comment">     * @return boolean[] map with the result for each domain. True means
 </span></span><span id="104" class="l"><span class="php-comment">     *      the domain is available, false not. NULL however means that the
 </span></span><span id="105" class="l"><span class="php-comment">     *      query failed for that domain.
 </span></span><span id="106" class="l"><span class="php-comment">     */</span>

@@ -8,8 +8,8 @@ namespace whoisServerList;
  * The cause of this exception is temporary. You should try the
  * causing call again.
  *
- * @author Markus Malkusch <markus@malkusch.de>
- * @link http://whois-api.domaininformation.de/ Whois API
+ * @author  Markus Malkusch <markus@malkusch.de>
+ * @link    http://whois-api.domaininformation.de/ Whois API
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
 class RecoverableWhoisApiException extends WhoisApiException

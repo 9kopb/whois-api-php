@@ -26,8 +26,8 @@ use Psr\Http\Message\ResponseInterface;
  * echo $whoisApi->isAvailable("example.net") ? "available" : "registered";
  * </code>
  *
- * @author Markus Malkusch <markus@malkusch.de>
- * @link http://whois-api.domaininformation.de/ Whois API
+ * @author  Markus Malkusch <markus@malkusch.de>
+ * @link    http://whois-api.domaininformation.de/ Whois API
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
 class WhoisApi
@@ -43,7 +43,7 @@ class WhoisApi
      *
      * Register at http://whois-api.domaininformation.de/ to get an API key.
      *
-     * @param string $apiKey API key
+     * @param string $apiKey   API key
      * @param string $endpoint optional endpoint, default is "https://whois-v0.p.mashape.com/".
      */
     public function __construct($apiKey, $endpoint = "https://whois-v0.p.mashape.com/")
@@ -55,11 +55,13 @@ class WhoisApi
             throw new \InvalidArgumentException("Endpoint is empty.");
         }
 
-        $this->client = new Client([
+        $this->client = new Client(
+            [
             "base_uri" => $endpoint,
             "headers" => ["X-Mashape-Key" => $apiKey],
             "http_errors" => false,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -68,7 +70,7 @@ class WhoisApi
      * If a domain is available (i.e. not registered) this method
      * will return true.
      *
-     * @param string $domain domain name, e.g. "example.net"
+     * @param  string $domain domain name, e.g. "example.net"
      * @return bool true if the domain is available, false otherwise.
      *
      * @throws RecoverableWhoisApiException API failed, but you can try again.
@@ -99,7 +101,7 @@ class WhoisApi
      * ]
      * </code>
      *
-     * @param string[] $domains domain names, e.g. ["example.net", "example.org"]
+     * @param  string[] $domains domain names, e.g. ["example.net", "example.org"]
      * @return boolean[] map with the result for each domain. True means
      *      the domain is available, false not. NULL however means that the
      *      query failed for that domain.
@@ -116,20 +118,22 @@ class WhoisApi
         }
         $results = Promise\unwrap($promises);
 
-        return array_map(function (ResponseInterface $response) {
-            if ($response->getStatusCode() != 200) {
-                return null;
-            }
-            $result = json_decode($response->getBody());
-            return $result->available;
-
-        }, $results);
+        return array_map(
+            function (ResponseInterface $response) {
+                if ($response->getStatusCode() != 200) {
+                    return null;
+                }
+                $result = json_decode($response->getBody());
+                return $result->available;
+            },
+            $results
+        );
     }
     
     /**
      * Returns the whois data for a domain.
      *
-     * @param string $domain domain name, e.g. "example.net"
+     * @param  string $domain domain name, e.g. "example.net"
      * @return string response of the respective whois server
      *
      * @throws RecoverableWhoisApiException API failed, but you can try again.
@@ -150,7 +154,7 @@ class WhoisApi
     /**
      * Queries a whois server.
      *
-     * @param string $host hostname of the whois server, e.g. "whois.verisign-grs.com"
+     * @param string $host  hostname of the whois server, e.g. "whois.verisign-grs.com"
      * @param string $query query, e.g. "example.net"
      *
      * @return string response from the whois server
@@ -187,7 +191,7 @@ class WhoisApi
     /**
      * Sends a request and return the reponse body.
      *
-     * @param string $path request path
+     * @param string   $path       request path
      * @param string[] $parameters request paramters
      *
      * @return string response body
@@ -199,13 +203,11 @@ class WhoisApi
     {
         try {
             $response = $this->client->request("GET", $path, ["query" => $parameters]);
-
         } catch (\Exception $e) {
             throw new WhoisApiException("Transport failed.", 0, $e);
         }
             
         switch ($response->getStatusCode()) {
-
             case 200:
                 return $response->getBody()->__toString();
 

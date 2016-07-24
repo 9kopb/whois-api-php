@@ -7,8 +7,8 @@ namespace whoisServerList;
  *
  * Please provide the environment variable API_KEY.
  *
- * @author Markus Malkusch <markus@malkusch.de>
- * @link http://whois-api.domaininformation.de/
+ * @author  Markus Malkusch <markus@malkusch.de>
+ * @link    http://whois-api.domaininformation.de/
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
 class WhoisApiIntegrationTest extends \PHPUnit_Framework_TestCase
